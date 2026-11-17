@@ -77,7 +77,7 @@
     const minF = fretted.length ? Math.min(...fretted) : 1;
     const base = maxF <= 5 ? 1 : minF;
     const rows = Math.max(4, maxF - base + 1);
-    const sx = 24, left = 34, top = 36, rowH = 30;
+    const sx = 24, left = 54, top = 36, rowH = 30;
     const width = left + sx * 5 + 26;
     const height = top + rows * rowH + 12;
     const root = svg('svg', { viewBox: `0 0 ${width} ${height}`, class: 'diagram', role: 'img' });
@@ -90,7 +90,7 @@
       const x = left + s * sx;
       root.appendChild(svg('line', { x1: x, x2: x, y1: top, y2: top + rows * rowH, class: 'string' }));
     }
-    if (base > 1) root.appendChild(svg('text', { x: left - 10, y: top + rowH / 2 + 4, class: 'base-fret', 'text-anchor': 'end' }, `${base}fr`));
+    if (base > 1) root.appendChild(svg('text', { x: left - 21, y: top + rowH / 2 + 4, class: 'base-fret', 'text-anchor': 'end' }, `${base}fr`));
 
     frets.forEach((f, s) => {
       const x = left + s * sx;

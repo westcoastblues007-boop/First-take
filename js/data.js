@@ -1,0 +1,150 @@
+// ジャズギター学習ページ — ボイシング & スケールデータ
+// ボイシングは「ルート = C」の時のフレット（6弦→1弦、null = ミュート）で記述し、
+// アプリ側で任意のキーへ移調する。degrees は各弦の度数。
+
+const VOICING_GROUPS = [
+  {
+    id: 'shell',
+    title: 'シェル・ボイシング',
+    desc: 'ルート＋3度＋7度（ガイドトーン）の3音だけで和音の性格を決める最小構成。ビッグバンドのフレディ・グリーン奏法や、II-V-I で 3度↔7度が半音・全音で滑らかにつながる「ガイドトーン・ライン」の基礎。ここから上にテンションを積んでいく。',
+    voicings: [
+      { suffix: 'maj7', note: '6弦ルート', frets: [8, null, 9, 9, null, null], degrees: ['R', null, '7', '3', null, null] },
+      { suffix: 'maj7', note: '5弦ルート', frets: [null, 3, 2, 4, null, null], degrees: [null, 'R', '3', '7', null, null] },
+      { suffix: '7', note: '6弦ルート', frets: [8, null, 8, 9, null, null], degrees: ['R', null, 'b7', '3', null, null] },
+      { suffix: '7', note: '5弦ルート', frets: [null, 3, 2, 3, null, null], degrees: [null, 'R', '3', 'b7', null, null] },
+      { suffix: 'm7', note: '6弦ルート', frets: [8, null, 8, 8, null, null], degrees: ['R', null, 'b7', 'b3', null, null] },
+      { suffix: 'm7', note: '5弦ルート', frets: [null, 3, 1, 3, null, null], degrees: [null, 'R', 'b3', 'b7', null, null] },
+      { suffix: '6', note: '6弦ルート', frets: [8, null, 7, 9, null, null], degrees: ['R', null, '6', '3', null, null] },
+    ],
+  },
+  {
+    id: 'drop2',
+    title: 'ドロップ2',
+    desc: 'クローズ・ボイシングの上から2番目の音を1オクターブ下げた形。隣接する4弦で押さえられ、ギターのコンピングで最も使われる。転回形（ルート/3度/5度/7度がトップ）を覚えるとメロディを乗せたコード・ソロが可能になる。',
+    voicings: [
+      { suffix: 'maj7', note: '5弦ルート', frets: [null, 3, 5, 4, 5, null], degrees: [null, 'R', '5', '7', '3', null] },
+      { suffix: '7', note: '5弦ルート', frets: [null, 3, 5, 3, 5, null], degrees: [null, 'R', '5', 'b7', '3', null] },
+      { suffix: 'm7', note: '5弦ルート', frets: [null, 3, 5, 3, 4, null], degrees: [null, 'R', '5', 'b7', 'b3', null] },
+      { suffix: 'm7♭5', note: '5弦ルート', frets: [null, 3, 4, 3, 4, null], degrees: [null, 'R', 'b5', 'b7', 'b3', null] },
+      { suffix: 'dim7', note: '5弦ルート', frets: [null, 3, 4, 2, 4, null], degrees: [null, 'R', 'b5', 'bb7', 'b3', null] },
+      { suffix: '6', note: '5弦ルート', frets: [null, 3, 5, 2, 5, null], degrees: [null, 'R', '5', '6', '3', null] },
+      { suffix: 'maj7', note: '4弦ルート', frets: [null, null, 10, 12, 12, 12], degrees: [null, null, 'R', '5', '7', '3'] },
+      { suffix: '7', note: '4弦ルート', frets: [null, null, 10, 12, 11, 12], degrees: [null, null, 'R', '5', 'b7', '3'] },
+      { suffix: 'm7', note: '4弦ルート', frets: [null, null, 10, 12, 11, 11], degrees: [null, null, 'R', '5', 'b7', 'b3'] },
+      { suffix: 'm7♭5', note: '4弦ルート', frets: [null, null, 10, 11, 11, 11], degrees: [null, null, 'R', 'b5', 'b7', 'b3'] },
+      { suffix: 'dim7', note: '4弦ルート', frets: [null, null, 10, 11, 10, 11], degrees: [null, null, 'R', 'b5', 'bb7', 'b3'] },
+      { suffix: 'maj7', note: 'トップ＝ルート', frets: [null, null, 9, 9, 8, 8], degrees: [null, null, '7', '3', '5', 'R'] },
+      { suffix: '7', note: 'トップ＝ルート', frets: [null, null, 8, 9, 8, 8], degrees: [null, null, 'b7', '3', '5', 'R'] },
+      { suffix: 'm7', note: 'トップ＝ルート', frets: [null, null, 8, 8, 8, 8], degrees: [null, null, 'b7', 'b3', '5', 'R'] },
+    ],
+  },
+  {
+    id: 'drop3',
+    title: 'ドロップ3',
+    desc: 'クローズ・ボイシングの上から3番目の音を1オクターブ下げた形。6弦ルート＋5弦ミュートで、低音の厚みと高音域の分離感が両立する。ソロギターやベースレスの編成でベースラインを兼ねたいときに便利。',
+    voicings: [
+      { suffix: 'maj7', note: '6弦ルート', frets: [8, null, 9, 9, 8, null], degrees: ['R', null, '7', '3', '5', null] },
+      { suffix: '7', note: '6弦ルート', frets: [8, null, 8, 9, 8, null], degrees: ['R', null, 'b7', '3', '5', null] },
+      { suffix: 'm7', note: '6弦ルート', frets: [8, null, 8, 8, 8, null], degrees: ['R', null, 'b7', 'b3', '5', null] },
+      { suffix: 'm7♭5', note: '6弦ルート', frets: [8, null, 8, 8, 7, null], degrees: ['R', null, 'b7', 'b3', 'b5', null] },
+      { suffix: 'dim7', note: '6弦ルート', frets: [8, null, 7, 8, 7, null], degrees: ['R', null, 'bb7', 'b3', 'b5', null] },
+      { suffix: '6', note: '6弦ルート', frets: [8, null, 7, 9, 8, null], degrees: ['R', null, '6', '3', '5', null] },
+    ],
+  },
+  {
+    id: 'tension',
+    title: 'テンション・コード',
+    desc: '5度やルートを省略してテンション（9・11・13、オルタード）を加えた実戦的なボイシング。ドミナントでは ♭9/♯9/♯11/♭13 の選択がそのままスケール選択（オルタード、コンディミ、リディアン♭7）と対応する。',
+    voicings: [
+      { suffix: 'maj9', note: '5弦ルート', frets: [null, 3, 2, 4, 3, null], degrees: [null, 'R', '3', '7', '9', null] },
+      { suffix: 'maj7(♯11)', note: '6弦ルート', frets: [8, null, 9, 9, 7, null], degrees: ['R', null, '7', '3', '#11', null] },
+      { suffix: '6/9', note: '5弦ルート', frets: [null, 3, 2, 2, 3, 3], degrees: [null, 'R', '3', '6', '9', '5'] },
+      { suffix: 'm9', note: '5弦ルート', frets: [null, 3, 1, 3, 3, null], degrees: [null, 'R', 'b3', 'b7', '9', null] },
+      { suffix: 'm11', note: '6弦ルート', frets: [8, null, 8, 8, 6, null], degrees: ['R', null, 'b7', 'b3', '11', null] },
+      { suffix: 'm6/9', note: '5弦ルート', frets: [null, 3, 1, 2, 3, 3], degrees: [null, 'R', 'b3', '6', '9', '5'] },
+      { suffix: '9', note: '5弦ルート', frets: [null, 3, 2, 3, 3, 3], degrees: [null, 'R', '3', 'b7', '9', '5'] },
+      { suffix: '13', note: '6弦ルート', frets: [8, null, 8, 9, 10, null], degrees: ['R', null, 'b7', '3', '13', null] },
+      { suffix: '7(♭9)', note: '5弦ルート', frets: [null, 3, 2, 3, 2, null], degrees: [null, 'R', '3', 'b7', 'b9', null] },
+      { suffix: '7(♯9)', note: '5弦ルート', frets: [null, 3, 2, 3, 4, null], degrees: [null, 'R', '3', 'b7', '#9', null] },
+      { suffix: '7(♯11)', note: '6弦ルート', frets: [8, null, 8, 9, 7, null], degrees: ['R', null, 'b7', '3', '#11', null] },
+      { suffix: '13(♭9)', note: '6弦ルート', frets: [8, null, 8, 9, 10, 9], degrees: ['R', null, 'b7', '3', '13', 'b9'] },
+      { suffix: '7alt(♯9,♭13)', note: '5弦ルート', frets: [null, 3, 2, 3, 4, 4], degrees: [null, 'R', '3', 'b7', '#9', 'b13'] },
+    ],
+  },
+  {
+    id: 'rootless',
+    title: 'ルートレス・ボイシング',
+    desc: 'ベーシストがルートを弾く前提でルートを省き、3度・7度＋テンションで構成する（ビル・エヴァンス型）。II-V-I で「Dm9 → G13 → Cmaj9」のように最小限の指の移動でつながるのがポイント。ダイアグラムの R 位置は鳴らさない。',
+    voicings: [
+      { suffix: '9', note: 'ルートレス', frets: [null, null, 2, 3, 3, 3], degrees: [null, null, '3', 'b7', '9', '5'] },
+      { suffix: '13', note: 'ルートレス', frets: [null, 1, 2, 2, 3, null], degrees: [null, 'b7', '3', '13', '9', null] },
+      { suffix: '7(♭9)', note: 'ルートレス', frets: [null, null, 2, 3, 2, 3], degrees: [null, null, '3', 'b7', 'b9', '5'] },
+      { suffix: '7alt', note: 'ルートレス', frets: [null, null, 2, 3, 4, 4], degrees: [null, null, '3', 'b7', '#9', 'b13'] },
+      { suffix: 'm9', note: 'ルートレス', frets: [null, 6, 5, 3, 3, null], degrees: [null, 'b3', '5', 'b7', '9', null] },
+      { suffix: 'maj9', note: 'ルートレス', frets: [null, null, 9, 9, 8, 10], degrees: [null, null, '7', '3', '5', '9'] },
+    ],
+  },
+  {
+    id: 'modern',
+    title: 'クォータル / モダン',
+    desc: '4度堆積（クォータル）やアッパー・ストラクチャーによるモーダルなサウンド。マイルス「So What」型の m11 は4度×3＋長3度。sus4 や ♯11、オーギュメント系はモード・ジャズやコンテンポラリーで多用される。',
+    voicings: [
+      { suffix: 'm11', note: 'So What', frets: [8, 8, 8, 8, 8, null], degrees: ['R', '11', 'b7', 'b3', '5', null] },
+      { suffix: '9sus4', note: 'クォータル', frets: [null, 3, 3, 3, 3, null], degrees: [null, 'R', '4', 'b7', '9', null] },
+      { suffix: '9(♯11)', note: '6弦ルート', frets: [8, null, 8, 9, 7, 10], degrees: ['R', null, 'b7', '3', '#11', '9'] },
+      { suffix: 'maj7(♯5)', note: '5弦ルート', frets: [null, 3, null, 4, 5, 4], degrees: [null, 'R', null, '7', '3', '#5'] },
+    ],
+  },
+];
+
+const SCALE_GROUPS = [
+  {
+    title: 'メジャー・スケールのモード',
+    scales: [
+      { id: 'ionian', name: 'アイオニアン', degrees: ['1', '2', '3', '4', '5', '6', '7'], chord: 'maj7', use: 'I maj7。4度はアヴォイド・ノート（3度と短9度でぶつかる）なので経過音として扱う。' },
+      { id: 'dorian', name: 'ドリアン', degrees: ['1', '2', 'b3', '4', '5', '6', 'b7'], chord: 'm7', use: 'II m7 の第一候補。長6度が特徴音。モード・ジャズ（So What, Impressions）の基本。' },
+      { id: 'phrygian', name: 'フリジアン', degrees: ['1', 'b2', 'b3', '4', '5', 'b6', 'b7'], chord: 'm7 / sus4(♭9)', use: 'III m7。sus4(♭9) コードやスパニッシュ風のサウンドにも。' },
+      { id: 'lydian', name: 'リディアン', degrees: ['1', '2', '3', '#4', '5', '6', '7'], chord: 'maj7(♯11)', use: 'IV maj7、または I maj7 を浮遊感のある響きにしたいとき。♯4 が特徴音。' },
+      { id: 'mixolydian', name: 'ミクソリディアン', degrees: ['1', '2', '3', '4', '5', '6', 'b7'], chord: '7 / 7sus4', use: '非解決のドミナントや sus4 コード。4度はアヴォイド（sus4 なら可）。' },
+      { id: 'aeolian', name: 'エオリアン', degrees: ['1', '2', 'b3', '4', '5', 'b6', 'b7'], chord: 'm7', use: 'VI m7、マイナー・キーのトニック。♭6 がダークな響き。' },
+      { id: 'locrian', name: 'ロクリアン', degrees: ['1', 'b2', 'b3', '4', 'b5', 'b6', 'b7'], chord: 'm7♭5', use: 'マイナー II-V の II（m7♭5）。♭2 を避けたい時はロクリアン♯2 を使う。' },
+    ],
+  },
+  {
+    title: 'メロディック・マイナーのモード',
+    scales: [
+      { id: 'melmin', name: 'メロディック・マイナー', degrees: ['1', '2', 'b3', '4', '5', '6', '7'], chord: 'm(maj7) / m6', use: 'マイナー・トニック（m6, mM7）。ジャズでは上行・下行とも同じ形で使う。' },
+      { id: 'lydaug', name: 'リディアン・オーギュメント', degrees: ['1', '2', '3', '#4', '#5', '6', '7'], chord: 'maj7(♯5)', use: 'maj7♯5。メロディック・マイナーの第3モード。' },
+      { id: 'lyddom', name: 'リディアン♭7', degrees: ['1', '2', '3', '#4', '5', '6', 'b7'], chord: '7(♯11)', use: '非解決ドミナント、裏コード（トライトーン代理）、IV7 など。' },
+      { id: 'mixb6', name: 'ミクソリディアン♭6', degrees: ['1', '2', '3', '4', '5', 'b6', 'b7'], chord: '7(♭13)', use: 'マイナーへ解決する V7 で 9度をナチュラルにしたい時。' },
+      { id: 'locsharp2', name: 'ロクリアン♯2', degrees: ['1', '2', 'b3', '4', 'b5', 'b6', 'b7'], chord: 'm7♭5 (9)', use: 'm7♭5 に ナチュラル9 を加えた響き。マイナー II-V の II に。' },
+      { id: 'altered', name: 'オルタード', degrees: ['1', 'b9', '#9', '3', '#11', 'b13', 'b7'], chord: '7alt', use: '解決するドミナントの定番。全テンションがオルタード（♭9 ♯9 ♯11 ♭13）。半音上のメロディック・マイナーと同じ音。' },
+    ],
+  },
+  {
+    title: 'ハーモニック・マイナー系',
+    scales: [
+      { id: 'harmmin', name: 'ハーモニック・マイナー', degrees: ['1', '2', 'b3', '4', '5', 'b6', '7'], chord: 'm(maj7)', use: 'マイナー・トニック。♭6→7 の増2度がエキゾチック。' },
+      { id: 'phrdom', name: 'フリジアン・ドミナント', degrees: ['1', 'b9', '3', '4', '5', 'b13', 'b7'], chord: '7(♭9,♭13)', use: 'マイナーへ解決する V7 の代表（HMP5↓）。ハーモニック・マイナーの第5モード。' },
+    ],
+  },
+  {
+    title: 'シンメトリック',
+    scales: [
+      { id: 'hwdim', name: 'コンビネーション・オブ・ディミニッシュ', degrees: ['1', 'b9', '#9', '3', '#11', '5', '13', 'b7'], chord: '7(♭9,13)', use: '半音-全音の繰り返し。短3度ごとに同じ形が現れる。13th と ♭9 を両方含むドミナントに。' },
+      { id: 'whdim', name: 'ディミニッシュ（全-半）', degrees: ['1', '2', 'b3', '4', 'b5', 'b6', '6', '7'], chord: 'dim7', use: '全音-半音の繰り返し。dim7 コード上で。' },
+      { id: 'wholetone', name: 'ホールトーン', degrees: ['1', '2', '3', '#4', '#5', 'b7'], chord: '7(♯5) / 7(♭13)', use: '全音のみ6音。2フレットずつずらしても同じスケール。オーギュメント・ドミナントに。' },
+    ],
+  },
+  {
+    title: 'ビバップ & ペンタトニック',
+    scales: [
+      { id: 'bebopdom', name: 'ビバップ・ドミナント', degrees: ['1', '2', '3', '4', '5', '6', 'b7', '7'], chord: '7', use: 'ミクソリディアンに長7度の経過音を加えた8音。8分音符で下行すると拍頭にコードトーンが来る。' },
+      { id: 'bebopmaj', name: 'ビバップ・メジャー', degrees: ['1', '2', '3', '4', '5', '#5', '6', '7'], chord: 'maj7 / 6', use: 'メジャー・スケールに ♯5 の経過音を加えた8音。' },
+      { id: 'bebopdor', name: 'ビバップ・ドリアン', degrees: ['1', '2', 'b3', '3', '4', '5', '6', 'b7'], chord: 'm7', use: 'ドリアンに長3度の経過音を加えた8音。' },
+      { id: 'minpent', name: 'マイナー・ペンタトニック', degrees: ['1', 'b3', '4', '5', 'b7'], chord: 'm7', use: 'ブルースの基本。m7 の上、または長3度下のメジャーキーで。' },
+      { id: 'blues', name: 'ブルース・スケール', degrees: ['1', 'b3', '4', 'b5', '5', 'b7'], chord: '7 / m7', use: 'マイナー・ペンタ＋♭5（ブルーノート）。' },
+      { id: 'majpent', name: 'メジャー・ペンタトニック', degrees: ['1', '2', '3', '5', '6'], chord: 'maj7 / 6', use: 'アヴォイドの無い安全なサウンド。ペンタを様々なルートから重ねるとアウトサイドの素材にもなる。' },
+    ],
+  },
+];

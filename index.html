@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jazz Guitar Lab</title>
+  <meta name="description" content="中級〜上級者向けジャズギター学習ページ。ドロップ2/3・ルートレス・テンションのボイシングと、モード/オルタード/ディミニッシュ等のスケールを指板図と音で確認できます。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <p class="eyebrow">Intermediate — Advanced</p>
+      <h1>Jazz Guitar Lab</h1>
+      <p class="lead">ボイシングとスケールを、指板図と音で。キーを選び、図をクリックすると音が鳴ります。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="chords" aria-selected="true">コード・ボイシング</button>
+      <button class="tab" role="tab" data-tab="scales" aria-selected="false">スケール</button>
+    </nav>
+
+    <section class="controls">
+      <div class="control">
+        <span class="control-label">キー（ルート）</span>
+        <div class="keys" id="keys"></div>
+      </div>
+      <div class="control">
+        <span class="control-label">表示</span>
+        <div class="segmented" id="label-mode">
+          <button data-mode="degree" class="on">度数</button>
+          <button data-mode="note">音名</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="legend">
+      <span><i class="dot d-root"></i>ルート</span>
+      <span><i class="dot d-guide"></i>3度・7度（ガイドトーン）</span>
+      <span><i class="dot d-chord"></i>5度</span>
+      <span><i class="dot d-tension"></i>テンション・6度</span>
+    </div>
+
+    <!-- コード -->
+    <section id="panel-chords" class="panel" role="tabpanel">
+      <div class="pills" id="group-pills"></div>
+      <div class="group-desc" id="group-desc"></div>
+      <div class="chord-grid" id="chord-grid"></div>
+    </section>
+
+    <!-- スケール -->
+    <section id="panel-scales" class="panel" role="tabpanel" hidden>
+      <div class="scale-head">
+        <label class="select">
+          <span class="control-label">スケール</span>
+          <select id="scale-select"></select>
+        </label>
+        <div class="position">
+          <span class="control-label">ポジション</span>
+          <div class="position-row">
+            <label class="check"><input type="checkbox" id="pos-all" checked> 全指板</label>
+            <input type="range" id="pos-start" min="0" max="11" value="7" disabled aria-label="ポジション開始フレット">
+            <span id="pos-text" class="muted"></span>
+          </div>
+        </div>
+        <div class="play-buttons">
+          <button class="btn primary" id="scale-play">▶ 再生</button>
+          <button class="btn" id="scale-stop">■ 停止</button>
+        </div>
+      </div>
+
+      <article class="scale-info" id="scale-info"></article>
+      <div class="fretboard-scroll"><div id="fretboard"></div></div>
+      <p class="hint muted">音符をクリックするとその音が鳴ります。ポジションを絞ると、その5フレット内の音を低い順に再生します。</p>
+    </section>
+
+    <section class="tips">
+      <h2>練習のヒント</h2>
+      <ul>
+        <li><b>ボイスリーディング</b>：II-V-I（例 Dm7 → G7 → Cmaj7）を、指の移動が最小になるボイシングの組み合わせで繋ぐ。ガイドトーン（3度・7度）がどう動くかを耳で追う。</li>
+        <li><b>全キー練習</b>：キーを4度進行（C → F → B♭ → E♭ …）で切り替えて、同じボイシングを全12キーで押さえる。</li>
+        <li><b>コードトーン・ソロ</b>：スケールを弾く前に、ガイドトーン（青）だけで旋律を作り、その後テンション（緑）で色を足す。</li>
+        <li><b>ドミナントの色付け</b>：同じ G7 でも ミクソリディアン / リディアン♭7 / オルタード / コンディミ を弾き比べ、テンションの違いを聴き分ける。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap muted">標準チューニング（E A D G B E）・音はブラウザ内で合成しています。</div>
+  </footer>
+
+  <script src="js/theory.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -56,7 +56,7 @@ const VOICING_GROUPS = [
   {
     id: 'drop3',
     title: 'ドロップ3',
-    desc: 'クローズ・ボイシングの上から3番目の音を1オクターブ下げた形。6弦ルート＋5弦ミュートで、低音の厚みと高音域の分離感が両立する。ソロギターやベースレスの編成でベースラインを兼ねたいときに便利。',
+    desc: 'クローズ・ボイシングの上から3番目の音を1オクターブ下げた形。6弦ルート（5弦をミュートする6・4・3・2弦）と5弦ルート（4弦をミュートする5・3・2・1弦）の2通りがあり、低音の厚みと高音域の分離感が両立する。ソロギターやベースレスの編成でベースラインを兼ねたいときに便利。',
     voicings: [
       { suffix: 'maj7', note: '6弦ルート', frets: [8, null, 9, 9, 8, null], degrees: ['R', null, '7', '3', '5', null] },
       { suffix: '7', note: '6弦ルート', frets: [8, null, 8, 9, 8, null], degrees: ['R', null, 'b7', '3', '5', null] },
@@ -64,6 +64,12 @@ const VOICING_GROUPS = [
       { suffix: 'm7♭5', note: '6弦ルート', frets: [8, null, 8, 8, 7, null], degrees: ['R', null, 'b7', 'b3', 'b5', null] },
       { suffix: 'dim7', note: '6弦ルート', frets: [8, null, 7, 8, 7, null], degrees: ['R', null, 'bb7', 'b3', 'b5', null] },
       { suffix: '6', note: '6弦ルート', frets: [8, null, 7, 9, 8, null], degrees: ['R', null, '6', '3', '5', null] },
+      { suffix: 'maj7', note: '5弦ルート', frets: [null, 3, null, 4, 5, 3], degrees: [null, 'R', null, '7', '3', '5'] },
+      { suffix: '7', note: '5弦ルート', frets: [null, 3, null, 3, 5, 3], degrees: [null, 'R', null, 'b7', '3', '5'] },
+      { suffix: 'm7', note: '5弦ルート', frets: [null, 3, null, 3, 4, 3], degrees: [null, 'R', null, 'b7', 'b3', '5'] },
+      { suffix: 'm7♭5', note: '5弦ルート', frets: [null, 3, null, 3, 4, 2], degrees: [null, 'R', null, 'b7', 'b3', 'b5'] },
+      { suffix: 'dim7', note: '5弦ルート', frets: [null, 3, null, 2, 4, 2], degrees: [null, 'R', null, 'bb7', 'b3', 'b5'] },
+      { suffix: '6', note: '5弦ルート', frets: [null, 3, null, 2, 5, 3], degrees: [null, 'R', null, '6', '3', '5'] },
     ],
   },
   {
